@@ -9,8 +9,8 @@ ruby '3.2.2'
 gem 'puma', '~> 6.4'
 gem 'rails', '~> 7.1.3', '>= 7.1.3.3'
 
-gem 'therubyracer'
 gem 'execjs'
+gem 'therubyracer'
 
 # ==== Database 
 gem 'sqlite3', '~> 1.4'
