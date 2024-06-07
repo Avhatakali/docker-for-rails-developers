@@ -1,0 +1,24 @@
+services:
+  web:
+    build: .  # Build the image from the current directory (context)
+    ports:
+      - "3000:3000"  # Map container port 3000 to host port 3000
+    volumes:
+      - ./:/app  # Mount the current directory as /app inside the container
+    environment:
+      - RAILS_ENV=development  # Set the Rails environment variable
+#     depends_on:
+#       - db  # This service depends on the db service being up first
+
+#   db:
+#     image: postgres:latest  # Use the latest official Postgres image
+#     environment:
+#       - POSTGRES_USER=postgres  # Set Postgres username
+#       - POSTGRES_PASSWORD=password  # Set Postgres password (replace with a strong password)
+#     ports:
+#       - "5432:5432"  # Map container port 5432 (default Postgres port) to host port 5432
+#     volumes:
+#       - postgres-data:/var/lib/postgresql/data  # Persist Postgres data
+
+# volumes:
+#   postgres-data:  # Define a named volume for Postgres data

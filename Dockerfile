@@ -13,14 +13,20 @@ ENV RAILS_ENV="development" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
 
-# Install packages needed to install nodejs
+# Install packages needed to install nodejs and postgresql-dev
 # RUN apt-get update -qq && \
-#   apt-get install --no-install-recommends -y curl && \
+#   apt-get install --no-install-recommends -y curl postgresql-server-dev-all && \
 #   rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# Install packages needed to install nodejs and postgresql-dev
+# Install packages needed to build gems, nodejs and posgresql
 RUN apt-get update -qq && \
-  apt-get install --no-install-recommends -y curl postgresql-server-dev-all && \
+  apt-get install --no-install-recommends -y \ 
+  build-essential \
+  curl \
+  git \
+  libvips \
+  pkg-config \
+  postgresql-server-dev-all && \
   rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install Node.js
@@ -34,8 +40,8 @@ RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz
 FROM base as build
 
 # Install packages needed to build gems
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libvips pkg-config
+# RUN apt-get update -qq && \
+#     apt-get install --no-install-recommends -y build-essential git libvips pkg-config
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
