@@ -16,7 +16,7 @@ gem 'therubyracer'
 gem 'sqlite3', '~> 1.4'
 # gem 'pg', '~> 1.2'
 # gem 'pg_search'
-# gem 'redis'
+gem 'redis', '~> 4.3'
 
 # ==== General
 gem 'action_policy'
